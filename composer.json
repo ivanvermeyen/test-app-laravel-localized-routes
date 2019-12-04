@@ -12,7 +12,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^2.0",
-        "lorisleiva/laravel-deployer": "^0.2.16"
+        "lorisleiva/laravel-deployer": "^0.2.16",
+        "spatie/laravel-translatable": "^4.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
