@@ -58,6 +58,28 @@ You will also find tests in this app for this feature.
 
 ## 📖 Examples
 
+#### ☑️ Categories with localized slug
+
+For this example I have setup a `Category` model with a localized slug, stored in the database.
+Querying the database for a localized value is taken care of by the `HasTranslation` trait, provided by `spatie/laravel-translatable`.
+
+The `resolveRouteBinding()` method in the model ensures that the slug matches the locale.
+This will only work with route model binding (if you type hint the model in the controller)
+and if the slug is stored in the database (we need to run a query).
+
+The `getRouteKeyName()` method in the model makes sure that the `route()` helper uses the `slug` attribute as the route parameter.
+The `HasTranslation` trait does the work to get the right translation.
+
+**This will work:**
+
+- /en/categories/category-english
+- /nl/categories/category-dutch
+
+**This will result in a `404` not found error:**
+
+- /en/categories/category-dutch
+- /nl/categories/category-english
+
 ## ☕️ Credits
 
 - [Ivan Vermeyen](https://byterider.io)
