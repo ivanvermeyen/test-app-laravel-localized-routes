@@ -80,6 +80,48 @@ The `HasTranslation` trait does the work to get the right translation.
 - /en/categories/category-dutch
 - /nl/categories/category-english
 
+#### ☑️ Posts with ID and automatic localized slug
+
+A cool pattern you see on many sites is that URL's contain a unique ID and a descriptive slug.
+
+```
+https://example.com/posts/1234/the-title-of-the-post
+```
+
+I like this, because even if we change the title of the post, we can still make the link work.
+
+For this example I've created a `Post` model with a route and controller.
+It looks for the post by its ID using Laravel's default behavior when type hinting our model in the controller.
+Then we perform a quick check if the provided slug matches the slug in the current locale.
+If not, we can redirect with the correct slug.
+
+In this model, the slug is computed from the title on the fly, so it doesn't have to be stored in the database.
+
+The `getSlugAttribute()` method is optional. It's just a nice shortcut to get the slug in the current locale
+with `$post->slug` instead of `$post->getSlug()`.
+
+When using the `route()` helper, you will need to provide both ID and slug parameters.
+Laravel will find the ID from any model instance automatically, but it does't have a clue about the slug.
+So you need to be explicit about the slug:
+
+```php
+$url = route('posts.show', [$post, $post->slug]);
+```
+
+**So in short, these URL's:**
+
+- /en/posts/1
+- /en/posts/1/post-in-dutch
+
+**Will redirect to** /en/posts/1/post-in-english
+
+**And these URL's:**
+
+- /nl/posts/1
+- /nl/posts/1/post-in-english
+
+**Will redirect to** /nl/posts/1/post-in-dutch
+
 ## ☕️ Credits
 
 - [Ivan Vermeyen](https://byterider.io)
