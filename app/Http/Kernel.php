@@ -34,6 +34,7 @@ class Kernel extends HttpKernel
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
+            \CodeZero\LocalizedRoutes\Middleware\SetLocale::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
@@ -76,7 +77,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\Authenticate::class,
         \Illuminate\Routing\Middleware\ThrottleRequests::class,
         \Illuminate\Session\Middleware\AuthenticateSession::class,
-        \CodeZero\LocalizedRoutes\Middleware\LocalizedRouteLocaleHandler::class,
+        \CodeZero\LocalizedRoutes\Middleware\SetLocale::class,
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
         \Illuminate\Auth\Middleware\Authorize::class,
     ];

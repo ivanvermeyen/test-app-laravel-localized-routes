@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c25c85dfd9d3c2e7bec0f210c41fe460",
+    "content-hash": "9b24ac5bc8a1c2c921dcb1ae13996aa3",
     "packages": [
         {
             "name": "0.0.0/composer-include-files",
@@ -55,26 +55,85 @@
             "time": "2019-05-09T08:06:44+00:00"
         },
         {
-            "name": "codezero/laravel-localized-routes",
-            "version": "1.3.3",
+            "name": "codezero/browser-locale",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/codezero-be/laravel-localized-routes.git",
-                "reference": "3bb52934fad0374da5aabfa8091038a88785e3c8"
+                "url": "https://github.com/codezero-be/browser-locale.git",
+                "reference": "36246aa6d07a20f20dca8725cf39cd3dbec80570"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codezero-be/laravel-localized-routes/zipball/3bb52934fad0374da5aabfa8091038a88785e3c8",
-                "reference": "3bb52934fad0374da5aabfa8091038a88785e3c8",
+                "url": "https://api.github.com/repos/codezero-be/browser-locale/zipball/36246aa6d07a20f20dca8725cf39cd3dbec80570",
+                "reference": "36246aa6d07a20f20dca8725cf39cd3dbec80570",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "illuminate/support": "^5.5",
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "CodeZero\\BrowserLocale\\Laravel\\BrowserLocaleServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CodeZero\\BrowserLocale\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Vermeyen",
+                    "email": "ivan@codezero.be"
+                }
+            ],
+            "description": "Get the most preferred locales from your visitor's browser.",
+            "keywords": [
+                "browser",
+                "country",
+                "detect",
+                "language",
+                "locale",
+                "php",
+                "website"
+            ],
+            "time": "2018-03-31T23:49:43+00:00"
+        },
+        {
+            "name": "codezero/laravel-localized-routes",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codezero-be/laravel-localized-routes.git",
+                "reference": "ae3db74c319905e746725cce430882e6c96046c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codezero-be/laravel-localized-routes/zipball/ae3db74c319905e746725cce430882e6c96046c6",
+                "reference": "ae3db74c319905e746725cce430882e6c96046c6",
                 "shasum": ""
             },
             "require": {
                 "0.0.0/composer-include-files": "^1.5",
-                "illuminate/support": "^5.6|^6.0",
+                "codezero/laravel-localizer": "^1.1",
+                "illuminate/support": ">=5.6",
                 "php": "^7.1"
             },
             "require-dev": {
-                "orchestra/testbench": "3.6.*|^4.0",
+                "mockery/mockery": "^1.3",
+                "orchestra/testbench": ">=3.6",
                 "phpunit/phpunit": "^7.0|^8.0"
             },
             "type": "library",
@@ -115,7 +174,69 @@
                 "routing",
                 "translation"
             ],
-            "time": "2019-09-05T17:04:18+00:00"
+            "time": "2019-12-17T14:10:32+00:00"
+        },
+        {
+            "name": "codezero/laravel-localizer",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codezero-be/laravel-localizer.git",
+                "reference": "e08d3f1bde2f12986a8898e39119d2f3858147e4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codezero-be/laravel-localizer/zipball/e08d3f1bde2f12986a8898e39119d2f3858147e4",
+                "reference": "e08d3f1bde2f12986a8898e39119d2f3858147e4",
+                "shasum": ""
+            },
+            "require": {
+                "codezero/browser-locale": "^3.0",
+                "illuminate/support": ">=5.6",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "orchestra/testbench": ">=3.6",
+                "phpunit/phpunit": "^7.0|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "CodeZero\\Localizer\\LocalizerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CodeZero\\Localizer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Vermeyen",
+                    "email": "ivan@codezero.be"
+                }
+            ],
+            "description": "Automatically detect and set an app locale that matches your visitor's preference.",
+            "keywords": [
+                "browser",
+                "cookie",
+                "country",
+                "detect",
+                "language",
+                "laravel",
+                "locale",
+                "localization",
+                "php",
+                "session"
+            ],
+            "time": "2019-12-15T19:53:40+00:00"
         },
         {
             "name": "cybercog/laravel-optimus",
