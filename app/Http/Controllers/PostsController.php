@@ -16,9 +16,9 @@ class PostsController extends Controller
         return view('posts.show', [
             'post' => $post,
             'urls' => [
-                'current' => Route::currentUrl(),
-                'en' => Route::currentUrl('en', [$post, $post->getSlug('en')]),
-                'nl' => Route::currentUrl('nl', [$post, $post->getSlug('nl')]),
+                'current' => Route::localizedUrl(),
+                'en' => Route::localizedUrl('en'),
+                'nl' => Route::localizedUrl('nl'),
             ],
         ]);
     }

@@ -23,8 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        \Route::macro('currentUrl', function ($locale = null, $parameters = null, $absolute = true) {
-            return route(\Route::currentRouteName(), $parameters ?: \Route::current()->parameters(), $absolute, $locale);
-        });
+        //
     }
 }

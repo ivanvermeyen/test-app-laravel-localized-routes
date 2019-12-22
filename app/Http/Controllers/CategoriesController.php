@@ -12,9 +12,9 @@ class CategoriesController extends Controller
         return view('categories.show', [
             'category' => $category,
             'urls' => [
-                'current' => Route::currentUrl(),
-                'en' => Route::currentUrl('en'),
-                'nl' => Route::currentUrl('nl'),
+                'current' => Route::localizedUrl(),
+                'en' => Route::localizedUrl('en'),
+                'nl' => Route::localizedUrl('nl'),
             ],
         ]);
     }

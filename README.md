@@ -49,13 +49,6 @@ This is mostly:
 - migrations in `database/migrations/`
 - tests in `tests/`
 
-## 🚏 The `Route::currentUrl()` Macro
-
-I have temporarily added a macro in `app/Providers/AppServiceProvider.php`
-that can be used to very easily generate alternate localized URL's for the current route.
-This is something I'm still working on, but this might be added to `codezero/laravel-localized-routes` in the future.
-You will also find tests in this app for this feature.
-
 ## 📖 Examples
 
 #### ☑️ Categories with localized slug
@@ -79,6 +72,8 @@ The `HasTranslation` trait does the work to get the right translation.
 
 - /en/categories/category-dutch
 - /nl/categories/category-english
+
+Since the `slug` is the route key, we can just call `Route::localizedUrl($locale)` to get a localized URL for the current route.
 
 #### ☑️ Posts with ID and automatic localized slug
 
@@ -121,6 +116,19 @@ $url = route('posts.show', [$post, $post->slug]);
 - /nl/posts/1/post-in-english
 
 **Will redirect to** /nl/posts/1/post-in-dutch
+
+Since the `id` is the route key, Laravel has no way to know what the localized slug should be.
+To use the `Route::localizedUrl($locale)` macro in full-auto (without manually passing through the parameters)
+I implemented the `\CodeZero\LocalizedRoutes\ProvidesRouteParameters` interface and added this method to the `Post` model:
+
+```php
+public function getRouteParameters($locale = null)
+{
+    return [$this->id, $this->getSlug($locale)];
+}
+```
+
+Behind the scenes, the macro will see the interface and call the method to get the right parameters for the URL. 
 
 ## ☕️ Credits
 
